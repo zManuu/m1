@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name" translatable="false">m1</string>
+    <string name="welcome">Welcome to m1!</string>
+    <string name="login_btn">Click to login</string>
+    <string name="desc_app_logo" translatable="false">app-logo</string>
+</resources>
