@@ -3,4 +3,18 @@
     <string name="welcome">Welcome to m1!</string>
     <string name="login_btn">Click to login</string>
     <string name="desc_app_logo" translatable="false">app-logo</string>
+    <string name="passwords">Passwords</string>
+    <string name="placeholder" translatable="false">...</string>
+    <string name="recipes">Recipes</string>
+    <string name="scroll_desc">scrollable container</string>
+    <string name="tab_passwords_template_header">Example-Header</string>
+    <string name="tab_passwords_template_websites">site1.com\nsite2.com\nsite3.com</string>
+    <string name="tab_passwords_action_copy">Copy</string>
+    <string name="tab_passwords_action_show">Show</string>
+    <string name="tab_passwords_action_reset">Reset</string>
+    <string name="example_input">Example-Input</string>
+    <string name="cancel">Cancel</string>
+    <string name="accept">Continue</string>
+    <string name="delete">Delete</string>
+    <string name="tab_passwords_template_password" translatable="false">A1B2C3</string>
 </resources>

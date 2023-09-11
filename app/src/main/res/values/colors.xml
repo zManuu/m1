@@ -2,6 +2,11 @@
 <resources>
     <color name="black">#191919</color>
     <color name="white">#E1E1E1</color>
+    <color name="black_full">#000000</color>
+    <color name="white_full">#FFFFFF</color>
+    <color name="dark_gray">#323232</color>
+    <color name="light_gray">#D7D7D7</color>
+    <color name="transparent">#00000000</color>
 
     <!-- the colors below are taken from tailwindCss: https://tailwindcss.com/docs/customizing-colors -->
     <color name="blue_400">#60a5fa</color>

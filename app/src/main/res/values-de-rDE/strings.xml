@@ -2,4 +2,16 @@
 <resources>
     <string name="welcome">Willkommen bei m1!</string>
     <string name="login_btn">Klicke, um dich einzuloggen</string>
+    <string name="passwords">Passwörter</string>
+    <string name="recipes">Rezepte</string>
+    <string name="scroll_desc">scrollbarer container</string>
+    <string name="tab_passwords_template_header">Beispiel-Password</string>
+    <string name="tab_passwords_template_websites">seite1.de\nseite2.de\nseite3.de</string>
+    <string name="tab_passwords_action_copy">Kopieren</string>
+    <string name="tab_passwords_action_show">Anzeigen</string>
+    <string name="tab_passwords_action_reset">Zurücksetzen</string>
+    <string name="example_input">Beispiel-Eingabe</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="accept">Weiter</string>
+    <string name="delete">Löschen</string>
 </resources>
