@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="?attr/colorPrimary2"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/card_recipe_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-16dp"
+        android:text="@string/tab_recipes_template_header"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/card_recipe_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/card_recipe_image"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/ingredients_card_image_desc"
+        android:src="@tools:sample/avatars"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/card_recipe_ingredients_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/ingredients"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_recipe_header" />
+
+    <TextView
+        android:id="@+id/card_recipe_ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/ingredients_example"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_recipe_ingredients_header" />
+
+    <TextView
+        android:id="@+id/card_recipe_steps_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/steps"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_recipe_image" />
+
+    <TextView
+        android:id="@+id/card_recipe_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/steps_example"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_recipe_steps_header" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_recipe_control_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/comp_rounded_button">
+
+        <ImageButton
+            android:id="@+id/card_recipe_control_delete"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/blue_500"
+            android:contentDescription="@string/card_recipe_control_delete_desc"
+            android:src="@android:drawable/ic_menu_delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/card_recipe_control_share"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/blue_500"
+            android:contentDescription="@string/card_recipe_control_share_desc"
+            android:src="@android:drawable/ic_menu_share"
+            app:layout_constraintStart_toEndOf="@+id/card_recipe_control_delete"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

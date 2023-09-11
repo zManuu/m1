@@ -10,13 +10,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,12 +21,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import lombok.Getter;
-import lombok.Setter;
 
 public class PasswordsManager implements ITabManager {
 
@@ -56,7 +50,10 @@ public class PasswordsManager implements ITabManager {
         }
     }
 
-    private final List<PasswordEntry> passwordEntries;
+    /**
+     * Not final, because it is reset on every {@link PasswordsManager#OnTabOpen()}
+     */
+    private List<PasswordEntry> passwordEntries;
     private final MainActivity activity;
     private final LayoutInflater layoutInflater;
     private final LinearLayout layout;
@@ -65,19 +62,20 @@ public class PasswordsManager implements ITabManager {
 
     public PasswordsManager(MainActivity activity) {
         this.activity = activity;
-        this.passwordEntries = loadFromStorage();
         this.layoutInflater = LayoutInflater.from(activity);
         this.clipboardManager = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
         this.layout = activity.findViewById(R.id.tab_passwords_scroll_layout);
     }
 
     @Override
-    public void OnTabOpen() {}
+    public void OnTabOpen() {
+        this.passwordEntries = loadFromStorage();
+        this.passwordEntries.forEach(this::createEntry);
+    }
 
     @Override
     public void OnTabClose() {
-        // todo: fix
-        // this.passwordEntries.clear();
+        this.passwordEntries.clear();
         layout.removeAllViews();
         currentEntryCardIndex = 0;
     }
@@ -93,8 +91,6 @@ public class PasswordsManager implements ITabManager {
     }
 
     private void createEntry(PasswordEntry entry) {
-        this.passwordEntries.add(entry);
-
         ViewGroup cardParent = (ViewGroup) layoutInflater.inflate(R.layout.card_password, layout);
         ViewGroup card = (ViewGroup) cardParent.getChildAt(currentEntryCardIndex++);
 
@@ -166,25 +162,25 @@ public class PasswordsManager implements ITabManager {
         Path path = Paths.get(activity.getFilesDir().toString(), "passwords.json");
         byte[] buffer = null;
 
+        List<PasswordEntry> defaultEntries = new ArrayList<>(Arrays.asList(
+                new PasswordEntry(
+                        activity.getString(R.string.tab_passwords_template_header),
+                        activity.getString(R.string.tab_passwords_template_websites).split("\n"),
+                        activity.getString(R.string.tab_passwords_template_password)
+                )
+        ));
+
+        if (!Files.exists(path) || Files.isDirectory(path))
+            return defaultEntries;
+
         try {
             buffer = Files.readAllBytes(path);
         } catch (IOException e) {
             Log.e("PasswordManager", "loadFromStorage failed because of IOException", e);
         }
 
-        if (buffer == null)
-            return new ArrayList<>();
-
-        if (buffer.length == 0) {
-            // empty load -> create sample
-            return Arrays.asList(
-                    new PasswordEntry(
-                            activity.getString(R.string.tab_passwords_template_header),
-                            activity.getString(R.string.tab_passwords_template_websites).split("\n"),
-                            activity.getString(R.string.tab_passwords_template_password)
-                    )
-            );
-        }
+        if (buffer == null || buffer.length == 0)
+            return defaultEntries;
 
         String storageJson = new String(buffer);
         return activity.getGson().fromJson(storageJson, List.class);

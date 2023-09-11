@@ -1,21 +1,19 @@
 package de.manu.m1;
 
-import androidx.annotation.IdRes;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.annotation.IdRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import lombok.Getter;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -17,4 +17,12 @@
     <string name="accept">Continue</string>
     <string name="delete">Delete</string>
     <string name="tab_passwords_template_password" translatable="false">A1B2C3</string>
+    <string name="tab_recipes_template_header" translatable="false">Pizza Diablo</string>
+    <string name="ingredients" >Ingredients</string>
+    <string name="ingredients_example">- Pizza\n- Salami\n- Cheese\n- Chilli</string>
+    <string name="ingredients_card_image_desc">Food picture</string>
+    <string name="steps">Steps</string>
+    <string name="steps_example">1. Salami on Pizza\n2. Cheese on Pizza\n3. Chilli on Pizza\n4. Pizza burn</string>
+    <string name="card_recipe_control_delete_desc">delete this recipe</string>
+    <string name="card_recipe_control_share_desc">share this recipe</string>
 </resources>
